@@ -1,4 +1,4 @@
-class Board {
+export class Board {
   constructor() {
     let grid = [];
     for (let i = 0; i < 8; i++) {
@@ -8,41 +8,29 @@ class Board {
   }
 
   getPiece(row, column) {
-    this.validatePosition(row, column);
-    return this.grid[row][column];
+    if (this.isValidPosition(row, column)) {
+      return this.grid[row][column];
+    } else {
+      throw new Error("Posição inválida!");
+    }
   }
 
   setPiece(row, column, piece) {
-    this.validatePosition(row, column);
-    this.grid[row][column] = piece;
-    const columnIdentifier = this.getColumn(column);
-    if (piece === null) {
-      return `posição ${columnIdentifier}${8 - row} vazia`;
+    if (this.isValidPosition(row, column)) {
+      this.grid[row][column] = piece;
+    } else {
+      throw new Error("Posição inválida!");
     }
-    return `${piece} posicionada em ${columnIdentifier}${8 - row}`;
   }
 
-  validatePosition(row, column) {
+  isValidPosition(row, column) {
     const isValid = (index) =>
       Number.isInteger(index) && index <= 7 && index >= 0;
-    if (isValid(row) && isValid(column)) {
-      return;
-    } else {
-      throw new Error("Posição fora do escopo");
-    }
+    return isValid(row) && isValid(column);
   }
 
   getColumn(index) {
-    const columns = ["a", "b", "c", "d", "e", "f", "g", "h"];
+    const columns = ["A", "B", "C", "D", "E", "F", "G", "H"];
     return columns[index];
   }
 }
-
-const board = new Board();
-
-console.log(board.setPiece(0, 0, "blabla"));
-console.log(board.getPiece(0, 0));
-console.log(board.setPiece(0, 1, "teste2"));
-console.log(board.getPiece(0, 1));
-console.log(board.setPiece(0, 0, null));
-console.log(board.getPiece(0, 0));
