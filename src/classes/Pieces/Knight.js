@@ -1,3 +1,4 @@
+import { possibleMoves } from "../../utils/index.js";
 import { Piece } from "../Piece.js";
 
 export class Knight extends Piece {
@@ -6,7 +7,6 @@ export class Knight extends Piece {
   }
   possibleMoves(row, column, board) {
     if (board.isValidPosition(row, column)) {
-      let possibilities = [];
       const offsets = [
         [2, 1],
         [2, -1],
@@ -18,12 +18,7 @@ export class Knight extends Piece {
         [-1, -2],
       ];
 
-      offsets.forEach((offset) => {
-        const move = [row + offset[0], column + offset[1]];
-        if (board.isValidPosition(move[0], move[1])) {
-          possibilities.push(move);
-        }
-      });
+      const possibilities = possibleMoves(row, column, board, offsets);
 
       return possibilities;
     } else {

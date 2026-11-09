@@ -1,0 +1,3 @@
+Para referenciar as linhas e colunas do tabuleiro, 1-8 e A-H respectivamente, o tabuleiro é representado como um array 8x8 com índices de 0 a 7, o que faz com que **a1** seja **[0, 0]** e **a8** seja **[7, 0]**, da mesma forma que **c5** é **[4, 2]**, pois a lógica trabalha com (row, column), e não o oposto.
+
+To reference the board's rows and columns, 1-8 and A-H respectively, the board is represented as an 8x8 array with 0 to 7 indexes, which leads **a1** to be **[0, 0]** and **a8** to be **[7, 0]**, the same way that **c5** maps to **[4, 2]** (the logic works with [row, column], and not the opposite).
