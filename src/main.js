@@ -3,12 +3,17 @@ import { Knight } from "./classes/Pieces/Knight.js";
 import { Board } from "./classes/Board.js";
 import { Bishop } from "./classes/Pieces/Bishop.js";
 import { Queen } from "./classes/Pieces/Queen.js";
+import { King } from "./classes/Pieces/King.js";
+import { Pawn } from "./classes/Pieces/Pawn.js";
 
 const board = new Board();
 const whiteRook = new Rook("white");
 const whiteKnight = new Knight("white");
 const blackBishop = new Bishop("black");
 const whiteQueen = new Queen("white");
+const whiteKing = new King("white");
+const blackPawn = new Pawn("black");
+const whitePawn = new Pawn("white");
 
 console.log(`Cavalo branco em ${board.getColumn(0)}${1}`);
 console.log(whiteKnight.possibleMoves(0, 0, board));
@@ -18,3 +23,9 @@ console.log(`Bispo preto em ${board.getColumn(5)}${5}`);
 console.log(blackBishop.possibleMoves(4, 5, board));
 console.log(`Rainha branca em ${board.getColumn(5)}${5}`);
 console.log(whiteQueen.possibleMoves(4, 5, board));
+console.log(`Rei branco em ${board.getColumn(4)}${1}`);
+console.log(whiteKing.possibleMoves(0, 4, board));
+console.log(`Peão preto em ${board.getColumn(1)}${7}`);
+console.log(blackPawn.possibleMoves(6, 1, board));
+console.log(`Peão branco em ${board.getColumn(1)}${2}`);
+console.log(whitePawn.possibleMoves(1, 1, board));

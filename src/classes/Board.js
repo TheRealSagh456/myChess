@@ -1,3 +1,5 @@
+import { pieceTypes } from "../utils/index.js";
+
 export class Board {
   constructor() {
     let grid = [];
@@ -32,5 +34,29 @@ export class Board {
   getColumn(index) {
     const columns = ["A", "B", "C", "D", "E", "F", "G", "H"];
     return columns[index];
+  }
+
+  sanitizeMoves(pieceType, positions) {
+    const sanitizedMoves = [];
+    if (!pieceTypes.includes(pieceType)) {
+      throw new Error("Tipo de peça inválido");
+    }
+    if (pieceType === "pawn") {
+      for (let i = 0; i <= 3; i++) {
+        positions.possibilities[i] &&
+        this.getPiece(
+          positions.possibilities[i][0],
+          positions.possibilities[i][1],
+        ) !== null
+          ? i === 0 || i === 3
+            ? sanitizedMoves.push(positions.possibilities[i])
+            : ""
+          : i === 1 || i === 2
+            ? sanitizedMoves.push(positions.possibilities[i])
+            : "";
+      }
+
+      return sanitizedMoves;
+    }
   }
 }
