@@ -28,17 +28,4 @@ export class Pawn extends Piece {
       throw new Error("Peça em posição inválida!");
     }
   }
-
-  enPassant(row, column, board, position) {
-    const previousColumnPiece = board.getPiece(row, column - 1);
-    const nextColumnPiece = board.getPiece(row, column + 1);
-
-    if (previousColumnPiece.constructor.name === "Pawn") {
-      position.push("previous");
-    }
-
-    if (nextColumnPiece.constructor.name === "Pawn") {
-      position.push("next");
-    }
-  }
 }

@@ -1,0 +1,29 @@
+.lightSquare {
+    width: 50px;
+    height: 50px;
+    background-color: #eff4ef;
+}
+
+.darkSquare {
+    width: 50px;
+    height: 50px;
+    background-color: #847780;
+}
+
+#board {
+    display: flex;
+    flex-direction: column;
+    border: 3px solid black;
+    width: fit-content;
+}
+#board > div {
+    display: flex;
+}
+
+body {
+    background-color: rgb(156, 156, 156); 
+    justify-content: center; 
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+}
